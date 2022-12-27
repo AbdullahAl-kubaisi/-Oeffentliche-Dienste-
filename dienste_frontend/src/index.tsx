@@ -9,7 +9,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createDocStore } from '@syncstate/core';
 import reportWebVitals from './reportWebVitals';
-import 'bootstrap/dist/css/bootstrap.min.css'
 
 const store = createDocStore({ isMenuOpen: false, userIsLoggedIn: false }, [
   remote.createInitializer(),
