@@ -29,4 +29,11 @@ public class PersonController {
         return personRepository.findAll();
     }
 
+    // build create Person REST API
+    @PostMapping
+    public Person createEmployee(@RequestBody Person person) {
+        return personRepository.save(person);
+    }
+
+
 }
