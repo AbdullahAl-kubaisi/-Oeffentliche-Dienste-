@@ -2,9 +2,11 @@ package ch.bbw.aa.controller;
 
 
 
+import ch.bbw.aa.exception.ResourceNotFoundException;
 import ch.bbw.aa.model.Person;
 import ch.bbw.aa.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,5 +37,11 @@ public class PersonController {
         return personRepository.save(person);
     }
 
-
+    // build get employee by id REST API
+    @GetMapping("{id}")
+    public ResponseEntity<Person> getPersonById(@PathVariable  long id){
+        Person person = personRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Person existiert nicht mit id:" + id));
+        return ResponseEntity.ok(person);
+    }
 }
