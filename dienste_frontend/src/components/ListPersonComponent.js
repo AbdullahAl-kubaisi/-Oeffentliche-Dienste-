@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PersonService from '../services/PersonService';
+import { Link } from '@mui/material';
 
 const ListPersonComponent = () => {
   const [persons, setPersons] = useState([]);
@@ -21,6 +22,9 @@ const ListPersonComponent = () => {
   return (
     <div className="container">
       <h2 className="text-center"> Liste alle Benutzern </h2>
+      <Link to="/add-person" className="btn btn-primary mb-2">
+        Person hinzufügen
+      </Link>
       <table className="table table-bordered table-striped">
         <thead>
           <th> Id </th>
