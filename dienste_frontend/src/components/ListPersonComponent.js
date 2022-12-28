@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PersonService from '../services/PersonService';
-import { Link } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const ListPersonComponent = () => {
   const [persons, setPersons] = useState([]);
@@ -38,7 +38,7 @@ const ListPersonComponent = () => {
           {persons.map((person) => (
             <tr key={person.id}>
               <td> {person.id} </td>
-              <td> {person.title} </td>
+              <td> {person.titl} </td>
               <td> {person.firstname} </td>
               <td> {person.lastname} </td>
               <td> {person.email} </td>
