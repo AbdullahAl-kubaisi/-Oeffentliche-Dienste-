@@ -14,12 +14,12 @@ const AddPerson = () => {
   const saveOrUpdatePerson = (e) => {
     e.preventDefault();
 
-    const person = { title, firstname, lastname, email, password, service };
+    const person = { titl, firstname, lastname, email, password, service };
 
     if (id) {
       PersonService.updatePerson(id, person)
         .then((response) => {
-          history.push('/persons');
+          history('/persons');
         })
         .catch((error) => {
           console.log(error);
@@ -28,7 +28,7 @@ const AddPerson = () => {
       PersonService.createPerson(person)
         .then((response) => {
           console.log(response.data);
-          history.push('/persons');
+          history('/persons');
         })
         .catch((error) => {
           console.log(error);
