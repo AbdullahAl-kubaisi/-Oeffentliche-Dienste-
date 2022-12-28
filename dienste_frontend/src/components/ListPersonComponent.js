@@ -9,12 +9,11 @@ const ListPersonComponent = () => {
       <table className="table table-bordered table-striped">
         <thead>
           <th> Id </th>
-          <th>  Title </th>
-          <th>  Firstname </th>
-          <th>  Lastname </th>
-          <th>  Email  </th>
-          <th>  Dienst  </th>
-
+          <th> Title </th>
+          <th> Firstname </th>
+          <th> Lastname </th>
+          <th> Email </th>
+          <th> Dienst </th>
         </thead>
         <tbody>
           {persons.map((person) => (
@@ -25,7 +24,6 @@ const ListPersonComponent = () => {
               <td> {persons.lastname} </td>
               <td> {persons.email} </td>
               <td> {persons.service} </td>
-
             </tr>
           ))}
         </tbody>
