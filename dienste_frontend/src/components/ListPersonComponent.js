@@ -1,8 +1,23 @@
-import { React, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import PersonService from '../services/PersonService';
 
 const ListPersonComponent = () => {
   const [persons, setPersons] = useState([]);
 
+  useEffect(() => {
+    getAllPersons();
+  }, []);
+
+  const getAllPersons = () => {
+    PersonService.getAllPersons()
+      .then((response) => {
+        setPersons(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div className="container">
       <h2 className="text-center"> Liste alle Benutzern </h2>
@@ -17,13 +32,13 @@ const ListPersonComponent = () => {
         </thead>
         <tbody>
           {persons.map((person) => (
-            <tr key={persons.id}>
-              <td> {persons.id} </td>
-              <td> {persons.title} </td>
-              <td> {persons.firstname} </td>
-              <td> {persons.lastname} </td>
-              <td> {persons.email} </td>
-              <td> {persons.service} </td>
+            <tr key={person.id}>
+              <td> {person.id} </td>
+              <td> {person.title} </td>
+              <td> {person.firstname} </td>
+              <td> {person.lastname} </td>
+              <td> {person.email} </td>
+              <td> {person.service} </td>
             </tr>
           ))}
         </tbody>
