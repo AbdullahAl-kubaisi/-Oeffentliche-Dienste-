@@ -6,6 +6,7 @@ import ch.bbw.aa.exception.ResourceNotFoundException;
 import ch.bbw.aa.model.Person;
 import ch.bbw.aa.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -61,5 +62,18 @@ public class PersonController {
         personRepository.save(updatePerson);
 
         return ResponseEntity.ok(updatePerson);
+    }
+
+    // build delete Person REST API
+    @DeleteMapping("{id}")
+    public ResponseEntity<HttpStatus> deletePerson(@PathVariable long id){
+
+        Person person = personRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Person existiert nicht mit id: " + id));
+
+        personRepository.delete(person);
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
     }
 }
