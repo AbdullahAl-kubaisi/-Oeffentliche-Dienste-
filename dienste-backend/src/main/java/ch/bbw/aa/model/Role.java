@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Role
@@ -28,6 +29,5 @@ public class Role {
 
     @Column(name = "rolename", nullable = false)
     private String rolename;
-
 
 }

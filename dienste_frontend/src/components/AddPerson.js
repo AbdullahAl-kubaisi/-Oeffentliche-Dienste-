@@ -19,6 +19,7 @@ const AddPerson = () => {
     if (id) {
       PersonService.updatePerson(id, person)
         .then((response) => {
+          console.log(response.data);
           history('/persons');
         })
         .catch((error) => {
@@ -139,6 +140,7 @@ const AddPerson = () => {
                     onChange={(e) => setService(e.target.value)}
                   ></input>
                 </div>
+
                 <button
                   className="btn btn-success"
                   onClick={(e) => saveOrUpdatePerson(e)}
