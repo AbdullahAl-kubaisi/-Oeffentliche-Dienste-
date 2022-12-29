@@ -50,4 +50,5 @@ public class Person {
     @ManyToOne
     @JoinColumn(name = "roleidfs", insertable = true, updatable = true)
     private Role role;
+
 }
