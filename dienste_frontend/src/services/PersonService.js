@@ -6,6 +6,7 @@ class PersonService {
   getAllPersons() {
     return axios.get(PERSON_BASE_REST_API_URL);
   }
+
   createPerson(person) {
     return axios.post(PERSON_BASE_REST_API_URL, person);
   }
@@ -13,6 +14,7 @@ class PersonService {
   getPersonById(personId) {
     return axios.get(PERSON_BASE_REST_API_URL + '/' + personId);
   }
+
   updatePerson(personId, person) {
     return axios.put(PERSON_BASE_REST_API_URL + '/' + personId, person);
   }

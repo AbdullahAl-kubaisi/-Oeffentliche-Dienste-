@@ -12,6 +12,7 @@ const App = (): JSX.Element => {
           <Route path="/" element={<ListPersonComponent />} />
           <Route path="/persons" element={<ListPersonComponent />} />
           <Route path="/add-person" element={<AddPerson />} />
+          <Route path="/edit-person/:id" element={<AddPerson />} />
         </Routes>
       </Router>
     </div>

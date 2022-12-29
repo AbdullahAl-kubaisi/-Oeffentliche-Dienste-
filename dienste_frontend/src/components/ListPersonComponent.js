@@ -33,6 +33,7 @@ const ListPersonComponent = () => {
           <th> Lastname </th>
           <th> Email </th>
           <th> Dienst </th>
+          <th> Aktion </th>
         </thead>
         <tbody>
           {persons.map((person) => (
@@ -43,6 +44,11 @@ const ListPersonComponent = () => {
               <td> {person.lastname} </td>
               <td> {person.email} </td>
               <td> {person.service} </td>
+              <td>
+                <Link className="btn btn-info" to={`/edit-person/${person.id}`}>
+                  Update
+                </Link>
+              </td>
             </tr>
           ))}
         </tbody>
