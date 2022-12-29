@@ -44,4 +44,22 @@ public class PersonController {
                 .orElseThrow(() -> new ResourceNotFoundException("Person existiert nicht mit id:" + id));
         return ResponseEntity.ok(person);
     }
+
+    // build update Person REST API
+    @PutMapping("{id}")
+    public ResponseEntity<Person> updatePerson(@PathVariable long id,@RequestBody Person personDetails) {
+        Person updatePerson = personRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Person existiert nicht mit id: " + id));
+
+        updatePerson.setTitl(personDetails.getTitl());
+        updatePerson.setFirstname(personDetails.getFirstname());
+        updatePerson.setLastname(personDetails.getLastname());
+        updatePerson.setEmail(personDetails.getEmail());
+        updatePerson.setPassword(personDetails.getPassword());
+        updatePerson.setService(personDetails.getService());
+
+        personRepository.save(updatePerson);
+
+        return ResponseEntity.ok(updatePerson);
+    }
 }
