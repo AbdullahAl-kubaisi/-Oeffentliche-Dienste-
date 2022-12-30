@@ -19,6 +19,18 @@ const ListPersonComponent = () => {
         console.log(error);
       });
   };
+
+  const deletePerson = (personId) => {
+    PersonService.deletePerson(personId)
+      .then((response) => {
+        getAllPersons();
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className="container">
       <h2 className="text-center"> Liste alle Benutzern </h2>
@@ -48,6 +60,13 @@ const ListPersonComponent = () => {
                 <Link className="btn btn-info" to={`/edit-person/${person.id}`}>
                   Update
                 </Link>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => deletePerson(person.id)}
+                  style={{ marginLeft: '10px' }}
+                >
+                  Delete
+                </button>
               </td>
             </tr>
           ))}
