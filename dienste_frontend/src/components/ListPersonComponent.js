@@ -45,6 +45,7 @@ const ListPersonComponent = () => {
           <th> Lastname </th>
           <th> Email </th>
           <th> Dienst </th>
+          <th> Role </th>
           <th> Aktion </th>
         </thead>
         <tbody>
@@ -56,6 +57,7 @@ const ListPersonComponent = () => {
               <td> {person.lastname} </td>
               <td> {person.email} </td>
               <td> {person.service} </td>
+              <td> {person.role.rolename} </td>
               <td>
                 <Link className="btn btn-info" to={`/edit-person/${person.id}`}>
                   Update
