@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import PersonService from '../services/PersonService';
+import RoleService from '../services/RoleService';
 
 const AddPerson = () => {
   const [titl, setTitl] = useState('');
@@ -9,12 +10,34 @@ const AddPerson = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [service, setService] = useState('');
+  const [data, setData] = useState([]);
+  const [rolenam, setRole] = useState('');
   const history = useNavigate();
   const { id } = useParams();
+
+  useEffect(() => {
+    RoleService.getAllRoles()
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
   const saveOrUpdatePerson = (e) => {
     e.preventDefault();
-
-    const person = { titl, firstname, lastname, email, password, service };
+    const person = {
+      titl,
+      firstname,
+      lastname,
+      email,
+      password,
+      service,
+      role: {
+        id: rolenam,
+      },
+    };
 
     if (id) {
       PersonService.updatePerson(id, person)
@@ -139,6 +162,24 @@ const AddPerson = () => {
                     value={service}
                     onChange={(e) => setService(e.target.value)}
                   ></input>
+                </div>
+
+                <div className="form-group mb-2">
+                  <label className="form-label">
+                    Role auswählen:
+                    <select
+                      value={rolenam}
+                      onChange={(e) => setRole(e.target.value)}
+                      className="form-control"
+                      name="role"
+                    >
+                      {data.map((item) => (
+                        <option value={item.id} key={item.id}>
+                          {item.rolename}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
                 </div>
 
                 <button

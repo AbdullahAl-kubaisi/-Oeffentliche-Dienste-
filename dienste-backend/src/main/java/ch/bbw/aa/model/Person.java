@@ -48,7 +48,7 @@ public class Person {
     private String service;
 
     @ManyToOne
-    @JoinColumn(name = "roleidfs", insertable = true, updatable = true)
+    @JoinColumn(name = "role", insertable = true, updatable = true)
     private Role role;
 
 }
