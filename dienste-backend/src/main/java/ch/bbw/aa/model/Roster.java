@@ -28,10 +28,10 @@ public class Roster {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "roster_from")
-    private LocalDate roster_from;
-    @Column(name = "roster_to")
-    private LocalDate roster_to;
+    @Column(name = "rosterFrom")
+    private LocalDate rosterFrom;
+    @Column(name = "rosterTo")
+    private LocalDate rosterTo;
     @Column(name = "comment")
     private String comment;
     @OneToOne

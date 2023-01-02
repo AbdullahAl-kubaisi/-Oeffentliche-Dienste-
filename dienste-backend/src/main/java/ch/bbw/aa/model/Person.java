@@ -51,7 +51,5 @@ public class Person {
     @JoinColumn(name = "role", insertable = true, updatable = true)
     private Role role;
 
-    @OneToOne(mappedBy = "person")
-    private Roster roster;
 
 }
