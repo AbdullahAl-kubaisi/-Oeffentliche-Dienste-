@@ -54,8 +54,8 @@ public class RosterController {
         Roster updateRoster = rosterRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Roster existiert nicht mit id: " + id));
 
-        updateRoster.setRoster_from(rosterDetails.getRoster_from());
-        updateRoster.setRoster_to(rosterDetails.getRoster_to());
+        updateRoster.setRosterFrom(rosterDetails.getRosterFrom());
+        updateRoster.setRosterTo(rosterDetails.getRosterTo());
         updateRoster.setComment(rosterDetails.getComment());
         updateRoster.setPerson(rosterDetails.getPerson());
 

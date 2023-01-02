@@ -43,6 +43,9 @@ const ListPersonComponent = () => {
       <Link to="/add-role" className="btn btn-primary mb-2">
         Role hinzufügen
       </Link>
+      <Link to="/add-roster" className="btn btn-primary mb-2">
+        Roster hinzufügen
+      </Link>
       <table className="table table-bordered table-striped">
         <thead>
           <th> Id </th>
