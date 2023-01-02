@@ -5,6 +5,8 @@ import ListPersonComponent from './components/ListPersonComponent';
 import AddRole from './components/AddRole';
 import ListRole from './components/ListRole';
 import AddPerson from './components/AddPerson';
+import AddRoster from './components/AddRoster';
+import ListRoster from './components/ListRoster';
 
 const App = (): JSX.Element => {
   return (
@@ -18,6 +20,9 @@ const App = (): JSX.Element => {
           <Route path="/roles" element={<ListRole />} />
           <Route path="/add-role" element={<AddRole />} />
           <Route path="/edit-role/:id" element={<AddRole />} />
+          <Route path="/rosters" element={<ListRoster />} />
+          <Route path="/add-roster" element={<AddRoster />} />
+          <Route path="/edit-roster/:id" element={<AddRoster />} />
         </Routes>
       </Router>
     </div>
