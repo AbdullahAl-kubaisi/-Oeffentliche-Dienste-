@@ -7,6 +7,8 @@ import ListRole from './components/ListRole';
 import AddPerson from './components/AddPerson';
 import AddRoster from './components/AddRoster';
 import ListRoster from './components/ListRoster';
+import ListLocation from './components/ListLocation';
+import AddLocation from './components/AddLocation';
 
 const App = (): JSX.Element => {
   return (
@@ -23,6 +25,9 @@ const App = (): JSX.Element => {
           <Route path="/rosters" element={<ListRoster />} />
           <Route path="/add-roster" element={<AddRoster />} />
           <Route path="/edit-roster/:id" element={<AddRoster />} />
+          <Route path="/locations" element={<ListLocation />} />
+          <Route path="/add-location" element={<AddLocation />} />
+          <Route path="/edit-location/:id" element={<AddLocation />} />
         </Routes>
       </Router>
     </div>
