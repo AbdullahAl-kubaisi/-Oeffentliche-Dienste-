@@ -41,6 +41,7 @@ const ListRoster = () => {
         <thead>
           <th> Tätigkeit </th>
           <th> Diensthabende Person </th>
+          <th> Adresse </th>
           <th> Dienst Von </th>
           <th> Dienst Bis </th>
           <th> Bemerkung </th>
@@ -54,6 +55,11 @@ const ListRoster = () => {
                 {roster.person.titl}
                 .&nbsp;&nbsp;{roster.person.firstname}
                 &nbsp;{roster.person.lastname}
+              </td>
+              <td>
+                {roster.location.canton}
+                .&nbsp;&nbsp;{roster.location.plz}
+                &nbsp;{roster.location.place}
               </td>
               <td> {roster.rosterFrom} </td>
               <td> {roster.rosterTo} </td>

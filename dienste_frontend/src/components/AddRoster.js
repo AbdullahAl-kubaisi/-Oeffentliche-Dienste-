@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import PersonService from '../services/PersonService';
 import RosterService from '../services/RosterService';
+import LocationService from '../services/LocationService';
 
 const AddRoster = () => {
   const [rosterFrom, setRosterFrom] = useState('');
@@ -9,6 +10,8 @@ const AddRoster = () => {
   const [comment, setComment] = useState('');
   const [data, setData] = useState([]);
   const [personname, setPersonname] = useState('');
+  const [dataa, setDataa] = useState([]);
+  const [adresse, setAdresse] = useState('');
   const history = useNavigate();
   const { id } = useParams();
 
@@ -16,6 +19,16 @@ const AddRoster = () => {
     PersonService.getAllPersons()
       .then((response) => {
         setData(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  useEffect(() => {
+    LocationService.getAllLocations()
+      .then((response) => {
+        setDataa(response.data);
       })
       .catch((error) => {
         console.error(error);
@@ -30,6 +43,9 @@ const AddRoster = () => {
       comment,
       person: {
         id: personname,
+      },
+      location: {
+        id: adresse,
       },
     };
 
@@ -133,6 +149,26 @@ const AddRoster = () => {
                           {item.titl}
                           .&nbsp;&nbsp;{item.firstname}
                           &nbsp;{item.lastname}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                </div>
+
+                <div className="form-group mb-2">
+                  <label className="form-label">
+                    Adresse auswählen:
+                    <select
+                      value={adresse}
+                      onChange={(e) => setAdresse(e.target.value)}
+                      className="form-control"
+                      name="locationidfs"
+                    >
+                      {dataa.map((item) => (
+                        <option value={item.id} key={item.id}>
+                          {item.plz}
+                          .&nbsp;&nbsp;{item.place}
+                          &nbsp;{item.canton}
                         </option>
                       ))}
                     </select>
