@@ -40,7 +40,5 @@ public class Location {
     @Column(name = "canton")
     private String canton;
 
-    @OneToMany(mappedBy = "location")
-    private List<Roster> rosterList = new ArrayList<Roster>();
 
 }
