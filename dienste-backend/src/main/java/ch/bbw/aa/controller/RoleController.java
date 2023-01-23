@@ -2,6 +2,7 @@ package ch.bbw.aa.controller;
 
 
 import ch.bbw.aa.exception.ResourceNotFoundException;
+import ch.bbw.aa.logger.LogService;
 import ch.bbw.aa.model.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,6 +31,9 @@ public class RoleController {
     @Autowired
     private RoleRepository roleRepository;
 
+    @Autowired
+    private LogService logService;
+
     @GetMapping
     public List<Role> getAllRoles(){
         return roleRepository.findAll();
@@ -38,6 +42,7 @@ public class RoleController {
     // build create Role REST API
     @PostMapping
     public Role createRole(@RequestBody Role role) {
+        logService.log("Role wurde erstellt", "info");
         return roleRepository.save(role);
     }
 
@@ -69,6 +74,7 @@ public class RoleController {
                 .orElseThrow(() -> new ResourceNotFoundException("Role existiert nicht mit id: " + id));
 
         roleRepository.delete(role);
+        logService.log("Role wurde gelöscht", "info");
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
